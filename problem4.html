@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <style>
+            body { font-family: sans-serif; }
+        </style>
+    </head>
+    <body>
+        <h1>Problem 4</h1>
+        <div id="problem">
+            <h2>Problem:</h2>
+            <p>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.</p>
+            <p>Find the largest palindrome made from the product of two 3-digit numbers.</p>
+        </div>
+        <div id="answer">
+            <h2>Answer:</h2>
+            <div id="result"></div>
+        </div>
+        <script type="text/javascript">
+            (function(){
+
+                let result;
+                let num1 = 100;
+                let num2 = 100;
+                let palindromes = [];
+
+                function reverseString(string) {
+
+                  string = string.toString();
+
+                  let newString = '';
+
+                  for (var i = string.length - 1; i >= 0; i--) {
+                      newString += string[i];
+                  }
+
+                  return newString;
+
+                }
+
+                function doTheThing(n1,n2) {
+
+                    let calc = n1 * n2;
+
+                    if (calc == reverseString(calc)) {
+
+                      palindromes.push(calc);
+
+                    }
+
+                }
+
+                while( num1 < 1000 ) {
+
+                  if ( num2 < 1000 ) {
+
+                    doTheThing(num1,num2);
+
+                    num2++;
+
+                  } else {
+
+                    num2 = 100;
+
+                    num1++;
+
+                    doTheThing(num1,num2);
+
+                  }
+
+                }
+
+                let biggest = 0;
+
+                for ( let i = 0; i < palindromes.length; i++ ) {
+
+                  if (palindromes[i] > biggest) {
+                    biggest = palindromes[i];
+                  }
+
+                }
+
+                document.getElementById('result').innerHTML = biggest;
+
+            })();
+        </script>
+    </body>
+</html>
