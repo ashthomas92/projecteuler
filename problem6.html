@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <style>
+            body { font-family: sans-serif; }
+        </style>
+        <script src="https://projecteuler.net/js/mathjax_config.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <h1>Problem 6</h1>
+        <div id="problem">
+            <h2>Problem:</h2>
+            <p>The sum of the squares of the first ten natural numbers is:</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <msup>
+                <mn>1</mn>
+                <mn>2</mn>
+              </msup>
+              <mo>+</mo>
+              <msup>
+                <mn>2</mn>
+                <mn>2</mn>
+              </msup>
+              <mo>+</mo>
+              <mo>.</mo>
+              <mo>.</mo>
+              <mo>.</mo>
+              <mo>+</mo>
+              <msup>
+                <mn>10</mn>
+                <mn>2</mn>
+              </msup>
+              <mo>=</mo>
+              <mn>385</mn>
+            </math>
+            <p>The square of the sum of the first ten natural numbers is:</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mo stretchy="false">(</mo>
+              <mn>1</mn>
+              <mo>+</mo>
+              <mn>2</mn>
+              <mo>+</mo>
+              <mo>.</mo>
+              <mo>.</mo>
+              <mo>.</mo>
+              <mo>+</mo>
+              <mn>10</mn>
+              <msup>
+                <mo stretchy="false">)</mo>
+                <mn>2</mn>
+              </msup>
+              <mo>=</mo>
+              <msup>
+                <mn>55</mn>
+                <mn>2</mn>
+              </msup>
+              <mo>=</mo>
+              <mn>3025</mn>
+            </math>
+            <p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is:</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mn>3025</mn>
+              <mo>&#x2212;</mo>
+              <mn>385</mn>
+              <mo>=</mo>
+              <mn>2640</mn>
+            </math>
+            <p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
+        </div>
+        <div id="answer">
+            <h2>Answer:</h2>
+            <div id="result"></div>
+        </div>
+        <script type="text/javascript">
+            (function(){
+
+              let sumOfSquares = 0;
+
+              for ( let i = 1; i <= 100; i++ ) {
+
+                let iSquared = i * i;
+
+                sumOfSquares += iSquared;
+
+              }
+
+              let sum = 0;
+
+              for ( let i = 1; i <= 100; i++ ) {
+
+                sum += i;
+
+              }
+
+              let squareOfSum = sum * sum;
+
+              let answer = squareOfSum - sumOfSquares;
+
+              document.getElementById('result').innerHTML = answer;
+
+            })();
+        </script>
+    </body>
+</html>

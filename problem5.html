@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <style>
+            body { font-family: sans-serif; }
+        </style>
+    </head>
+    <body>
+        <h1>Problem 5</h1>
+        <div id="problem">
+            <h2>Problem:</h2>
+            <p>2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.</p>
+            <p>What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?</p>
+        </div>
+        <div id="answer">
+            <h2>Answer:</h2>
+            <div id="result">Working it out (this one takes a while, grab a cuppa)</div>
+        </div>
+        <script type="text/javascript">
+            (function(){
+
+                let startNum = 9999,
+                answer,
+                addDot = 0;
+
+                // Using a 1ms async/await timer delay in the loop to avoid crashing the browser
+                const timer = ms => new Promise(res => setTimeout(res, ms));
+
+                async function doTheThing() {
+
+                  for ( let i = 1; i <= 20; i++ ) {
+
+                    let result = startNum/i;
+
+                    console.log('Dividing ' + startNum + ' by ' + i + '. Result: ' + result);
+
+                    if( Number.isInteger(result) ) {
+                      if ( i == 20 ) {
+                        answer = startNum;
+                      }
+                    } else {
+                      console.log('%cLast result wasn\'t an integer. Moving on.','color: #c30;');
+                      break;
+                    }
+
+                    await timer( 1 );
+
+                  }
+
+                  if(answer != null) {
+
+                    document.getElementById('result').innerHTML = answer;
+
+                  } else {
+
+                    if (document.getElementById('result').innerHTML.length < 65) {
+                      addDot++;
+                      if (addDot == 100) {
+                        document.getElementById('result').append('.');
+                        addDot = 0;
+                      }
+                    } else {
+                      document.getElementById('result').innerHTML = 'Working it out (this one takes a while, grab a cuppa)';
+                    }
+
+                    startNum++;
+
+                    doTheThing();
+
+                  }
+
+                }
+
+                doTheThing();
+
+            })();
+        </script>
+    </body>
+</html>
