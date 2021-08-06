@@ -15,64 +15,18 @@
         </div>
         <div id="answer">
             <h2>Answer:</h2>
-            <div id="result">Working it out (this one takes a while, grab a cuppa)</div>
+            <div id="result"></div>
         </div>
         <script type="text/javascript">
             (function(){
 
-                let startNum = 2520,
-                answer,
-                addDot = 0;
+              let i = 2520;
 
-                // Using a 1ms async/await timer delay in the loop to avoid crashing the browser
-                const timer = ms => new Promise(res => setTimeout(res, ms));
+              while ( i%1 != 0 || i%2 != 0 || i%3 != 0 || i%4 != 0 || i%5 != 0 || i%6 != 0 || i%7 != 0 || i%8 != 0 || i%9 != 0 || i%10 != 0 || i%11 != 0 || i%12 != 0 || i%13 != 0 || i%14 != 0 || i%15 != 0 || i%16 != 0 || i%17 != 0 || i%18 != 0 || i%19 != 0 || i%20 != 0 ) {
+                i += 20;
+              }
 
-                async function doTheThing() {
-
-                  for ( let i = 1; i <= 20; i++ ) {
-
-                    let result = startNum/i;
-
-                    console.log('Dividing ' + startNum + ' by ' + i + '. Result: ' + result);
-
-                    if( Number.isInteger(result) ) {
-                      if ( i == 20 ) {
-                        answer = startNum;
-                      }
-                    } else {
-                      console.log('%cLast result wasn\'t an integer. Moving on.','color: #c30;');
-                      break;
-                    }
-
-                    await timer( 1 );
-
-                  }
-
-                  if(answer != null) {
-
-                    document.getElementById('result').innerHTML = answer;
-
-                  } else {
-
-                    if (document.getElementById('result').innerHTML.length < 65) {
-                      addDot++;
-                      if (addDot == 100) {
-                        document.getElementById('result').append('.');
-                        addDot = 0;
-                      }
-                    } else {
-                      document.getElementById('result').innerHTML = 'Working it out (this one takes a while, grab a cuppa)';
-                    }
-
-                    startNum += 20;
-
-                    doTheThing();
-
-                  }
-
-                }
-
-                doTheThing();
+              document.getElementById('result').innerHTML = i;
 
             })();
         </script>
