@@ -22,55 +22,39 @@
         <script type="text/javascript">
             (function(){
 
+              function primeTest(n) {
+
+                let m = Math.sqrt(n);
+
+                for (let i = 2; i <= m; i++) {
+
+                    if (n % i == 0) return false;
+
+                }
+
+                return true;
+
+              }
+
+              let num = 2;
+              
               let primes = [];
-              let i = 0;
 
-              // Using a 1ms async/await timer delay in the loop to avoid crashing the browser
-              const timer = ms => new Promise(res => setTimeout(res, ms));
+              while (primes.length < 10001) {
 
-              async function primeTest(n) {
+                if (primeTest(num)) {
 
-                let isPrime;
-
-                for ( let i = 2; i <= n; i++ ) {
-
-                  if ( Number.isInteger(i/n) ) {
-
-                    return false;
-
-                    break;
-
-                  } else {
-
-                    if ( i == n ) {
-
-                      return true;
-
-                    }
-
-                  }
-
-                  await timer(1);
+                  primes.push(num);
 
                 }
 
-              }
-
-              while ( primes.length < 10001 ) {
-
-                console.log( primeTest(i) );
-/*
-                if (primeTest(i)) {
-
-                  primes.push(i);
-
-                }
-*/
-                i++;
+                num++;
 
               }
 
-              console.log( primes );
+              console.log(primes);
+
+              document.getElementById('result').innerHTML = primes[10000];
 
             })();
         </script>
